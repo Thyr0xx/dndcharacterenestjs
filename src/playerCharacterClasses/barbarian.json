@@ -7,40 +7,55 @@
             "atLevel1": 12,
             "onLevelUp": 7
         },
-        "keyAbilities": [
-            "strenght",
-            "dexterity",
-            "constitution"
-        ],
-        "savingThrowProficiencies": [
-            "strenght",
-            "constitution"
-        ],
-        "equipmentProficiencies": [
-            "martialWeapons",
-            "simpleWeapons",
-            "lightArmour",
-            "mediumArmour",
-            "shields"
-        ],
-        "skillProficiencies": [
-            "animalHandling",
-            "athletics",
-            "intimidation",
-            "nature",
-            "survival",
-            "perception"
-        ],
-        "startingEquipment": [
-            "greataxe",
-            "handaxe",
-            "barbarian",
-            "clothes",
-            "leatherBoots"
-        ],
-        "spellcastingAbility": [
-            "charisma"
-        ],
+        "classInformations": {
+            "keyAbilities": [
+                "strenght",
+                "dexterity",
+                "constitution"
+            ],
+            "savingThrowProficiencies": [
+                "strenght",
+                "constitution"
+            ],
+            "equipmentProficiencies": [
+                "martialWeapons",
+                "simpleWeapons",
+                "lightArmour",
+                "mediumArmour",
+                "shields"
+            ],
+            "skillProficiencies": [
+                "animalHandling",
+                "athletics",
+                "intimidation",
+                "nature",
+                "survival",
+                "perception"
+            ],
+            "startingEquipment": [
+                "greataxe",
+                "handaxe",
+                "barbarian",
+                "clothes",
+                "leatherBoots"
+            ],
+            "spellcastingAbility": [
+                "charisma"
+            ]
+        },
+        "levelProgession": {
+            "level1": [
+                {
+                    "name": "Rage",
+                    "description": "Lorem Ipsum",
+                    "charge": "2"
+                },
+                {
+                    "name": "narmouredDefence",
+                    "description": "Lorem Ipsum"
+                }
+            ]
+        },
         "subClasses": [
             {
                 "id": "wildheart",
@@ -321,7 +336,7 @@
                     ]
                 },
                 "level-10": {
-                    "id" : "unstalbleBacklash",
+                    "id": "unstalbleBacklash",
                     "name": "Unstalble Backlash",
                     "description": [
                         {
