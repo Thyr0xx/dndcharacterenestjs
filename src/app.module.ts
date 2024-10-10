@@ -2,9 +2,11 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RacesModule } from './races/races.module';
-import { CantripsModule } from './cantrips/cantrips.module';
+import { CantripsModule } from './spells/cantrips.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { CharacterClassService } from './character-class/character-class.service';
+import { CharacterClassModule } from './character-class/character-class.module';
 
 @Module({
   imports: [
@@ -20,13 +22,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         port: parseInt(configService.get('DB_PORT'),10),
         username: configService.get('DB_USERNAME'),
         password: configService.get('DB_PASSWORD'),
-        database: configService.get('DE_DATABASE'),
+        database: configService.get('DB_DATABASE'),
         entities:[__dirname+ '/**/*.entity{.ts,.js}'],
         synchronize: true,
-      }),
+      }),      
     }),
-    RacesModule, CantripsModule],
+    RacesModule, CantripsModule, CharacterClassModule],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, CharacterClassService],
 })
 export class AppModule {}

@@ -1,13 +1,19 @@
-// src/characters/characters.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CharactersService } from './characters.service';
 import { CharactersController } from './characters.controller';
-import { Character } from './entities/character.entitty';
-import { Race } from '../races/entities/race.entity';
+import { RacesModule } from 'src/races/races.module';
+import { Character } from './entities/character.entity';
+import { CantripsModule } from 'src/spells/cantrips.module';
+//import { CharacterClassModule } from 'src/character-class/character-class.module';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Character, Race])],
+  imports: [
+    TypeOrmModule.forFeature([Character]),
+    RacesModule,
+    CantripsModule
+    //CharacterClassModule
+  ],
   controllers: [CharactersController],
   providers: [CharactersService],
 })
