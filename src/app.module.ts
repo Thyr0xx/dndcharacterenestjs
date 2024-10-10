@@ -7,6 +7,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { CharacterClassService } from './character-class/character-class.service';
 import { CharacterClassModule } from './character-class/character-class.module';
+import { CharactersModule } from './characters/characters.module';
 
 @Module({
   imports: [
@@ -27,7 +28,7 @@ import { CharacterClassModule } from './character-class/character-class.module';
         synchronize: true,
       }),      
     }),
-    RacesModule, CantripsModule, CharacterClassModule],
+    RacesModule, CantripsModule, CharacterClassModule, CharactersModule],
   controllers: [AppController],
   providers: [AppService, CharacterClassService],
 })

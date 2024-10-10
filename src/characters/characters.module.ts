@@ -11,8 +11,7 @@ import { CantripsModule } from 'src/spells/cantrips.module';
   imports: [
     TypeOrmModule.forFeature([Character]),
     RacesModule,
-    CantripsModule
-    //CharacterClassModule
+    CantripsModule,
   ],
   controllers: [CharactersController],
   providers: [CharactersService],

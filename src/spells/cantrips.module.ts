@@ -4,6 +4,7 @@ import { CantripsController } from './cantrips.controller';
 
 @Module({
   providers: [CantripsService],
-  controllers: [CantripsController]
+  controllers: [CantripsController],
+  exports: [CantripsService]
 })
 export class CantripsModule {}

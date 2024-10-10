@@ -4,6 +4,7 @@ import { RacesController } from './races.controller';
 
 @Module({
   providers: [RacesService],
-  controllers: [RacesController]
+  controllers: [RacesController],
+  exports: [RacesService],
 })
 export class RacesModule {}

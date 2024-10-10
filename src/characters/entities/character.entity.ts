@@ -16,9 +16,9 @@ export class Character{
     @Column({nullable: true})
     subRaceId?: string
 
-    //store ID player character classes
-    @Column('simple-json')
-    classIds: string[]
+    // //store ID player character classes
+    // @Column('simple-json')
+    // classIds: string[]
 
     //store character level
     @Column()
