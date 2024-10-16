@@ -122,7 +122,7 @@
       },
       "scaling": {
         "spellSlots": [2, 3, 4, 5, 6],
-        "effects": [
+        "damages": [
           {
             "dice": "3d6"
           },

@@ -1,0 +1,772 @@
+{
+  "2": [
+    {
+      "id": "aid",
+      "name": "Aid",
+      "description": "Bolster your allies with toughness and resolve to heal and increase their Hit Points maximum.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "abjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "areaOfEffect": {
+        "shape": "radius",
+        "size": 9,
+        "unit": "meters"
+      },
+      "duration": "untilLongRest",
+      "effect": {
+        "type": "buff",
+        "targets": "all allies within range",
+        "hitPointMaximumIncrease": 5,
+        "additional": "Hit point maximum increases by a further 5 hit points for every Spell Slot Level above 2 used."
+      },
+      "scaling": {
+        "spellSlots": [3, 4, 5, 6],
+        "effects": [
+          {
+            "hitPointMaximumIncrease": 10
+          },
+          {
+            "hitPointMaximumIncrease": 15
+          },
+          {
+            "hitPointMaximumIncrease": 20
+          },
+          {
+            "hitPointMaximumIncrease": 25
+          }
+        ]
+      },
+      "classes": ["cleric"],
+      "subClasses": [
+        {
+          "name": ["lifeDomain"],
+          "level": 3
+        }
+      ],
+      "additionalClasses": [
+        {
+          "class": "paladin",
+          "level": 5
+        }
+      ],
+      "tags": ["healing", "buff", "abjuration"]
+    },
+    {
+      "id": "arcaneLock",
+      "name": "Arcane Lock",
+      "description": "Close a door or container with a magical lock. It can no longer be lockpicked or opened with Knock.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "abjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 1.5,
+        "unit": "meters"
+      },
+      "duration": "10 turns",
+      "effect": {
+        "type": "lock",
+        "target": "door or container",
+        "cannotBeOpenedBy": ["lockpicking", "Knock spell"]
+      },
+      "classes": ["wizard"],
+      "subClasses": [
+        {
+          "name": ["collegeOfLore"],
+          "level": 6
+        },
+        {
+          "name": ["eldritchKnight"],
+          "level": 7
+        },
+        {
+          "name": ["arcaneTrickster"],
+          "level": 8
+        }
+      ],
+      "feats": [],
+      "tags": ["utility", "control", "abjuration"]
+    },
+    {
+      "id": "barkskin",
+      "name": "Barkskin",
+      "description": "Touch a willing creature to toughen its skin and increase its Armour Class up to 16.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "transmutation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 1.5,
+        "unit": "meters"
+      },
+      "duration": "untilLongRest",
+      "effect": {
+        "type": "buff",
+        "target": "willing creature",
+        "armorClass": 16,
+        "additional": "If your Armour Class is lower than 16, Barkskin changes your base Armour Class to 16 with no other bonuses allowed from any source."
+      },
+      "concentration": true,
+      "classes": ["druid"],
+      "subClasses": [
+        {
+          "name": ["natureDomain"],
+          "level": 3
+        },
+        {
+          "name": ["circleOfTheLandForest"],
+          "level": 3
+        }
+      ],
+      "additionalClasses": [
+        {
+          "class": "ranger",
+          "level": 5
+        }
+      ],
+      "tags": ["buff", "defense", "transmutation"]
+    },
+    {
+      "id": "blindness",
+      "name": "Blindness",
+      "description": "Limit a foe's sight range. It is easier to hit, and the creature will miss more often.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "necromancy",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "10 turns",
+      "effect": {
+        "type": "debuff",
+        "target": "one creature",
+        "condition": "blinded",
+        "savingThrow": {
+          "type": "constitution",
+          "onSuccess": "spellFails"
+        },
+        "additional": "Attack rolls against it have Advantage and the foe attacks with Disadvantage."
+      },
+      "scaling": {
+        "spellSlots": [3, 4, 5, 6],
+        "effects": [
+          {
+            "targets": "up to two creatures"
+          },
+          {
+            "targets": "up to three creatures"
+          },
+          {
+            "targets": "up to four creatures"
+          },
+          {
+            "targets": "up to five creatures"
+          }
+        ]
+      },
+      "classes": ["bard", "cleric", "sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["theFiend"],
+          "level": 3
+        },
+        {
+          "name": ["circleOfTheSpores"],
+          "level": 3
+        },
+        {
+          "name": ["arcaneTrickster"],
+          "level": 8
+        },
+        {
+          "name": ["eldritchKnight"],
+          "level": 8
+        }
+      ],
+      "tags": ["debuff", "control", "necromancy"]
+    },
+    {
+      "id": "blur",
+      "name": "Blur",
+      "description": "Attackers have Disadvantage on Attack rolls against you. Doesn't affect creatures that don't rely on sight or that can see through illusions.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "illusion",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "10 turns",
+      "effect": {
+        "type": "buff",
+        "target": "self",
+        "condition": "blurred",
+        "additional": "Attackers have Disadvantage on Attack rolls against this creature, unless they do not rely on sight or can see through illusions."
+      },
+      "concentration": true,
+      "classes": ["sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["circleOfTheLandDesert"],
+          "level": 3
+        },
+        {
+          "name": ["collegeOfLore"],
+          "level": 6
+        },
+        {
+          "name": ["arcaneTrickster"],
+          "level": 7
+        },
+        {
+          "name": ["eldritchKnight"],
+          "level": 8
+        }
+      ],
+      "tags": ["buff", "defense", "illusion", "concentration"]
+    },
+    {
+      "id": "brandingSmite",
+      "name": "Branding Smite",
+      "description": "Your weapon gleams with astral radiance as you strike and possibly mark your targets with light, preventing it from turning Invisible. This spell, unlike other Smite Spells, will work with Ranged weaponry.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "bonusAction",
+      "range": {
+        "type": "weaponRange"
+      },
+      "duration": "10 turns",
+      "damage": {
+        "weaponDamage": true,
+        "additionalDamage": {
+          "dice": "2d6",
+          "type": "radiant"
+        }
+      },
+      "attackRoll": true,
+      "effect": {
+        "type": "brandingSmite",
+        "condition": "cannotTurnInvisible",
+        "duration": "10 turns"
+      },
+      "scaling": {
+        "spellSlots": [3, 4, 5, 6],
+        "effects": [
+          {
+            "additionalDamage": {
+              "dice": "3d6"
+            }
+          },
+          {
+            "additionalDamage": {
+              "dice": "4d6"
+            }
+          },
+          {
+            "additionalDamage": {
+              "dice": "5d6"
+            }
+          },
+          {
+            "additionalDamage": {
+              "dice": "6d6"
+            }
+          }
+        ]
+      },
+      "variants": ["Branding Smite (Melee)", "Branding Smite (Ranged)"],
+      "classes": ["paladin"],
+      "races": [
+        {
+          "race": "zarielTiefling",
+          "level": 5
+        }
+      ],
+      "tags": ["damage", "radiant", "smite", "evocation"]
+    },
+    {
+      "id": "calmEmotions",
+      "name": "Calm Emotions",
+      "description": "Humanoids can't be Charmed, Frightened, or become enraged.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "areaOfEffect": {
+        "shape": "radius",
+        "size": 6,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "calmEmotions",
+        "conditionsPrevented": ["charmed", "frightened", "rage"],
+        "targets": "humanoids"
+      },
+      "concentration": true,
+      "classes": ["bard", "cleric"],
+      "subClasses": [
+        {
+          "name": ["theArchfey"],
+          "level": 3
+        }
+      ],
+      "tags": ["control", "enchantment", "buff", "concentration"]
+    },
+    {
+      "id": "cloudOfDaggers",
+      "name": "Cloud of Daggers",
+      "description": "Conjure a cloud of spinning daggers that attack anyone inside.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "conjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "10 turns",
+      "damage": {
+        "type": "slashing",
+        "dice": "4d4",
+        "areaOfEffect": {
+          "shape": "radius",
+          "size": 2,
+          "unit": "meters"
+        },
+        "appliesEachTurn": true
+      },
+      "effect": {
+        "type": "createsArea",
+        "area": "Cloud of Daggers",
+        "duration": "10 turns",
+        "areaOfEffect": {
+          "shape": "radius",
+          "size": 2,
+          "unit": "meters"
+        },
+        "effects": ["damage on entry and start of turn"]
+      },
+      "concentration": true,
+      "scaling": {
+        "spellSlots": [3, 4, 5, 6],
+        "damages": [
+          {
+            "dice": "6d4"
+          },
+
+          {
+            "dice": "8d4"
+          },
+          {
+            "dice": "10d4"
+          },
+          {
+            "dice": "12d4"
+          }
+        ]
+      },
+      "classes": ["bard", "sorcerer", "warlock", "wizard"],
+      "subClasses": [
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 8
+        }
+      ],
+      "tags": [
+        "damage",
+        "areaOfEffect",
+        "slashing",
+        "conjuration",
+        "concentration"
+      ]
+    },
+    {
+      "id": "crownOfMadness",
+      "name": "Crown of Madness",
+      "description": "Instill madness in a humanoid enemy, making them attack the creature closest to them (other than you), even if it's allied.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "3 turns",
+      "effect": {
+        "type": "charm",
+        "target": "one humanoid",
+        "condition": "crownOfMadness",
+        "behavior": "attacks nearest creature other than the caster"
+      },
+      "savingThrow": {
+        "type": "wisdom",
+        "onSuccess": "spellFails"
+      },
+      "concentration": true,
+      "classes": ["bard", "sorcerer", "warlock", "wizard"],
+      "subClasses": [
+        {
+          "name": ["oathbreaker"],
+          "level": 5
+        },
+        {
+          "name": ["arcaneTrickster"],
+          "level": 7
+        },
+        {
+          "name": ["eldritchKnight"],
+          "level": 8
+        }
+      ],
+      "tags": ["control", "enchantment", "charm", "concentration"]
+    },
+    {
+      "id": "darkvision",
+      "name": "Darkvision",
+      "description": "Grant a creature the ability to see in the dark out to a range of 12 m / 40 ft.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "transmutation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "untilLongRest",
+      "damage": {},
+      "effect": {
+        "type": "darkvision",
+        "canSeeInDark": true,
+        "range": {
+          "distance": 12,
+          "unit": "meters"
+        }
+      },
+      "classes": [
+        {
+          "name": "druid",
+          "level": 3
+        },
+        {
+          "name": "sorcerer",
+          "level": 3
+        },
+        {
+          "name": "wizard",
+          "level": 3
+        },
+        {
+          "name": "ranger",
+          "level": 5
+        }
+      ],
+      "subClasses": [
+        {
+          "name": "collegeOfLore",
+          "level": 6
+        },
+        {
+          "name": "arcaneTrickster",
+          "level": 8
+        },
+        {
+          "name": "eldritchKnight",
+          "level": 8
+        },
+        {
+          "name": "bard",
+          "level": 10
+        }
+      ],
+      "feats": [],
+      "tags": ["transmutation", "utility", "vision", "buff"]
+    },
+    {
+      "id": "detectThoughts",
+      "name": "Detect Thoughts",
+      "description": "Focus your mind to read the thoughts of certain creatures while talking to them.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "divination",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "untilLongRest",
+      "damage": {},
+      "effect": {
+        "type": "detectThoughts",
+        "canReadThoughts": true,
+        "target": "certain creatures"
+      },
+      "classes": [
+        {
+          "name": "bard",
+          "level": 3
+        },
+        {
+          "name": "sorcerer",
+          "level": 3
+        },
+        {
+          "name": "wizard",
+          "level": 3
+        },
+        {
+          "name": "theGreatOldOne",
+          "level": 3
+        },
+        {
+          "name": "circleOfTheSpores",
+          "level": 3
+        }
+      ],
+      "subClasses": [
+        {
+          "name": "arcaneTrickster",
+          "level": 8
+        },
+        {
+          "name": "eldritchKnight",
+          "level": 8
+        }
+      ],
+      "feats": [],
+      "tags": ["divination", "control", "utility", "concentration"],
+      "ritual": true,
+      "concentration": true
+    },
+    {
+      "id": "enhanceAbility",
+      "name": "Enhance Ability",
+      "description": "Bestow a magical enchantment upon an ally. They gain Advantage on Ability Checks with a chosen Ability.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "transmutation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 1.5,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "damage": {},
+      "effect": {
+        "type": "buff",
+        "target": "creature",
+        "movementIncrease": {
+          "distance": 3,
+          "unit": "meters"
+        }
+      },
+      "scaling": {
+        "spellSlots": [3, 4, 5, 6],
+        "effects": [
+          {
+            "target": 2
+          },
+          {
+            "target": 3
+          },
+          {
+            "target": 4
+          },
+          {
+            "target": 5
+          }
+        ]
+      },
+      "classes": [
+        {
+          "name": "bard",
+          "level": 3
+        },
+        {
+          "name": "cleric",
+          "level": 3
+        },
+        {
+          "name": "druid",
+          "level": 3
+        },
+        {
+          "name": "sorcerer",
+          "level": 3
+        }
+      ],
+      "subClasses": [],
+      "feats": [],
+      "tags": ["transmutation", "buff", "enhancement", "concentration"],
+      "variants": [
+        "Bear's Endurance",
+        "Bull's Strength",
+        "Cat's Grace",
+        "Eagle's Splendour",
+        "Fox's Cunning",
+        "Owl's Wisdom"
+      ]
+    },
+    {
+      "id": "enlargeReduce",
+      "name": "Enlarge/Reduce",
+      "description": "Make a creature larger or smaller. Either option has a duration of 10 turns. This affects their weapon damage and Strength Checks and Saving throws.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "transmutation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 9,
+        "unit": "meters"
+      },
+      "duration": "10 turns",
+      "damage": {},
+      "effect": {
+        "type": "alterSize",
+        "options": ["enlarge", "reduce"],
+        "effects": ["weaponDamage", "strengthChecks", "savingThrows"]
+      },
+      "classes": [
+        {
+          "name": "sorcerer",
+          "level": 3
+        },
+        {
+          "name": "wizard",
+          "level": 3
+        }
+      ],
+      "subClasses": [
+        {
+          "name": "arcaneTrickster",
+          "level": 8
+        },
+        {
+          "name": "eldritchKnight",
+          "level": 8
+        }
+      ],
+      "feats": [],
+      "tags": ["transmutation", "buff", "debuff", "utility"],
+      "variants": ["Enlarge", "Reduce"],
+      "races": [
+        {
+          "race": "duergar",
+          "level": 3
+        }
+      ]
+    },
+    {
+      "id": "enthrall",
+      "name": "Enthrall",
+      "description": "Reduce a creature's peripheral vision and make it look at you.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 6,
+        "unit": "meters"
+      },
+      "duration": "10 turns",
+      "damage": {},
+      "effect": {
+        "type": "enthrall",
+        "condition": "enthralled",
+        "behavior": "makes target look at you"
+      },
+      "classes": [
+        {
+          "name": "bard",
+          "level": 3
+        },
+        {
+          "name": "warlock",
+          "level": 3
+        }
+      ],
+      "subClasses": [],
+      "feats": [],
+      "tags": ["enchantment", "control", "charm", "utility"]
+    },
+    {
+        "id": "flameBlade",
+        "name": "Flame Blade",
+        "description": "Conjure a flaming Scimitar in your hand for 10 turns that deals 3d6 Fire damage. It sheds a bright light in a 3 m / 10 ft radius and a dim light in a 6 m / 20 ft radius. The blade can be unequipped and equipped again, but has to stay on the spellcaster's person.",
+        "level": 2,
+        "consumeSpellSlot": true,
+        "school": "evocation",
+        "castingTime": "bonusAction",
+        "range": {
+          "distance": 0,
+          "unit": "self"
+        },
+        "duration": "10 turns",
+        "damage": {
+          "type": "fire",
+          "dice": "3d6"
+        },
+        "effect": {
+          "type": "summonWeapon",
+          "details": "Flaming scimitar that sheds bright and dim light",
+          "light": {
+            "bright": {
+              "radius": 3,
+              "unit": "meters"
+            }
+          },
+          "constraints": "Blade must stay on the spellcaster's person"
+        },
+        "scaling": {
+          "spellSlots": [3, 4, 5, 6],
+          "effects": [
+            {
+              "additionalDamage": {
+                "dice": "4d6"
+              }
+            },
+            {
+              "additionalDamage": {
+                "dice": "5d6"
+              }
+            },
+            {
+                "additionalDamage": {
+                  "dice": "6d6"
+                }
+              },
+              {
+                "additionalDamage": {
+                  "dice": "7d6"
+                }
+              }
+          ]
+        },
+        "classes": ["druid"],
+        "subClasses": [],
+        "feats": [],
+        "tags": ["evocation", "damage", "fire", "utility"],
+        "races": [
+          {
+            "race": "Mephistopheles Tiefling",
+            "level": 5
+          }
+        ]
+      }
+      
+  ]
+}
