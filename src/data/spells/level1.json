@@ -1,0 +1,2646 @@
+{
+  "1": [
+    {
+      "id": "animalFriendship",
+      "name": "Animal Friendship",
+      "description": "Convince a beast that you mean it no harm, charming it for a duration.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "enchantement",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "tenMinutes",
+      "effect": {
+        "type": "charm",
+        "target": "beast",
+        "conditions": ["cannotAttackCaster", "advantageOnCharismaChecks"]
+      },
+      "savingThrow": {
+        "type": "wisdom",
+        "onSuccess": "spellFails"
+      },
+      "classes": ["bard", "druid", "ranger"],
+      "subClasses": [
+        {
+          "name": ["natureDomain"],
+          "level": 1
+        }
+      ],
+      "tags": ["control", "social", "charm"]
+    },
+    {
+      "id": "armorOfAgathys",
+      "name": "Armure d'Agathys",
+      "description": "Create a protective layer of frost that grants temporary hit points and damages melee attackers.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "abjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "untilLongRest",
+      "effect": {
+        "type": "temporaryHitPoints",
+        "amount": 5,
+        "damageToAttackers": {
+          "damage": 5,
+          "type": "cold"
+        }
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "temporaryHitPoints": 10,
+            "damageToAttackers": 10
+          },
+          {
+            "temporaryHitPoints": 15,
+            "damageToAttackers": 15
+          },
+          {
+            "temporaryHitPoints": 20,
+            "damageToAttackers": 20
+          },
+          {
+            "temporaryHitPoints": 25,
+            "damageToAttackers": 25
+          },
+          {
+            "temporaryHitPoints": 30,
+            "damageToAttackers": 30
+          }
+        ]
+      },
+      "classes": ["warlock"],
+      "subClasses": [
+        {
+          "name": ["draconicBloodline"],
+          "ancestry": "cold",
+          "level": 1
+        }
+      ],
+      "tags": ["buff", "defense", "damage", "cold"]
+    },
+    {
+      "id": "armsOfHadar",
+      "name": "Bras d'Hadar",
+      "description": "Summon dark tendrils that erupt from you, damaging and restraining nearby foes.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "conjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "instantaneous",
+      "damage": {
+        "type": "necrotic",
+        "dice": "2d6"
+      },
+      "areaOfEffect": {
+        "radius": 3,
+        "unit": "meters",
+        "shape": "sphere"
+      },
+      "savingThrow": {
+        "type": "strength",
+        "onSuccess": {
+          "damage": "half",
+          "effect": "none"
+        }
+      },
+      "effect": {
+        "type": "preventReactions",
+        "duration": "oneTurn"
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "dice": "3d6"
+          },
+          {
+            "dice": "4d6"
+          },
+          {
+            "dice": "5d6"
+          },
+          {
+            "dice": "6d6"
+          },
+          {
+            "dice": "7d6"
+          }
+        ]
+      },
+      "classes": ["warlock"],
+      "tags": ["damage", "areaOfEffect", "control", "necrotic"]
+    },
+    {
+      "id": "bane",
+      "name": "Bane",
+      "description": "Temporarily curse up to three creatures, imposing a penalty on their attack rolls and saving throws.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 9,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "debuff",
+        "target": "up to three creatures",
+        "penalty": "1d4",
+        "appliesTo": ["attack rolls", "saving throws"]
+      },
+      "savingThrow": {
+        "type": "charisma",
+        "onSuccess": "spellFails"
+      },
+      "concentration": true,
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "target": "up to four creatures"
+          },
+          {
+            "target": "up to five creatures"
+          },
+          {
+            "target": "up to six creatures"
+          },
+          {
+            "target": "up to seven creatures"
+          },
+          {
+            "target": "up to eight creatures"
+          }
+        ]
+      },
+      "classes": ["bard", "cleric"],
+      "subClasses": [
+        {
+          "name": ["oathOfVengeance"],
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateBard", "magicInitiateCleric"],
+      "otherLearn": [
+        {
+          "method": "eldritchInvocation",
+          "name": "thiefOfFiveFates",
+          "class": "warlock",
+          "level": 2,
+          "usage": "oncePerLongRest"
+        }
+      ],
+      "tags": ["debuff", "control", "curse"]
+    },
+    {
+      "id": "bless",
+      "name": "Bless",
+      "description": "Bless up to three creatures, granting them a bonus on attack rolls and saving throws.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 9,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "buff",
+        "target": "up to three creatures",
+        "bonus": "1d4",
+        "appliesTo": ["attack rolls", "saving throws"]
+      },
+      "concentration": true,
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "target": "up to four creatures"
+          },
+          {
+            "target": "up to five creatures"
+          },
+          {
+            "target": "up to six creatures"
+          },
+          {
+            "target": "up to seven creatures"
+          },
+          {
+            "target": "up to eight creatures"
+          }
+        ]
+      },
+      "classes": ["cleric", "paladin"],
+      "subClasses": [
+        {
+          "name": ["lifeDomain"],
+          "level": 1
+        }
+      ],
+      "feats": ["magicInitiateCleric"],
+      "tags": ["buff", "support", "concentration"]
+    },
+    {
+      "id": "burningHands",
+      "name": "Burning Hands",
+      "description": "Create a cone of flame that deals fire damage to each creature in the area.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "areaOfEffect": {
+        "shape": "cone",
+        "size": 5,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "damage": {
+        "type": "fire",
+        "dice": "3d6",
+        "save": {
+          "type": "dexterity",
+          "onSuccess": "half"
+        }
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "damages": [
+          {
+            "dice": "4d6"
+          },
+          {
+            "dice": "5d6"
+          },
+          {
+            "dice": "6d6"
+          },
+          {
+            "dice": "7d6"
+          },
+          {
+            "dice": "8d6"
+          }
+        ]
+      },
+      "classes": ["sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["theFiend", "lightDomain"],
+          "level": 1
+        },
+        {
+          "name": ["draconicBloodline"],
+          "ancestry": "fire",
+          "level": 1
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "races": ["mephistophelesTiefling"],
+      "feats": ["magicInitiateSorcerer", "magicInitiateWizard"],
+      "tags": ["damage", "areaOfEffect", "fire"]
+    },
+    {
+      "id": "charmPerson",
+      "name": "Charm Person",
+      "description": "Attempt to charm a humanoid creature, making it friendly towards you.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "oneHour",
+      "effect": {
+        "type": "charm",
+        "target": "humanoid",
+        "conditions": ["cannotAttackCaster", "advantageOnCharismaChecks"]
+      },
+      "savingThrow": {
+        "type": "wisdom",
+        "onSuccess": "spellFails",
+        "advantage": "ifHostile"
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "target": "up to two creatures"
+          },
+          {
+            "target": "up to three creatures"
+          },
+          {
+            "target": "up to four creatures"
+          },
+          {
+            "target": "up to five creatures"
+          },
+          {
+            "target": "up to six creatures"
+          }
+        ]
+      },
+      "classes": ["bard", "druid", "sorcerer", "warlock", "wizard"],
+      "subClasses": [
+        {
+          "name": ["trickeryDomain"],
+          "level": 1
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": [
+        "magicInitiateBard",
+        "magicInitiateDruid",
+        "magicInitiateSorcerer",
+        "magicInitiateWarlock",
+        "magicInitiateWizard"
+      ],
+      "tags": ["control", "social", "charm"]
+    },
+    {
+      "id": "chromaticOrb",
+      "name": "Chromatic Orb",
+      "description": "Hurl a sphere of energy at a creature, dealing damage of a type you choose.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "damage": {
+        "types": ["acid", "cold", "fire", "lightning", "poison", "thunder"],
+        "dice": "2d8"
+      },
+      "attackRoll": true,
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "damages": [
+          {
+            "dice": "3d8"
+          },
+          {
+            "dice": "4d8"
+          },
+          {
+            "dice": "5d8"
+          },
+          {
+            "dice": "6d8"
+          },
+          {
+            "dice": "7d8"
+          }
+        ]
+      },
+      "classes": ["sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateSorcerer", "magicInitiateWizard"],
+      "otherLearn": [
+        {
+          "method": "eldritchInvocation",
+          "name": "bookOfAncientSecrets",
+          "class": "warlock",
+          "level": 7,
+          "usage": "oncePerLongRest"
+        }
+      ],
+      "tags": ["damage", "versatile", "elemental"]
+    },
+    {
+      "id": "colourSpray",
+      "name": "Colour Spray",
+      "description": "Emit a dazzling array of flashing, colored lights that can blind creatures within the area.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "illusion",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "areaOfEffect": {
+        "shape": "cone",
+        "size": 5,
+        "unit": "meters"
+      },
+      "duration": "oneTurn",
+      "effect": {
+        "type": "blind",
+        "target": "creatures",
+        "hitPointsAffected": 33
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "hitPointsAffected": 44
+          },
+          {
+            "hitPointsAffected": 55
+          },
+          {
+            "hitPointsAffected": 66
+          },
+          {
+            "hitPointsAffected": 77
+          },
+          {
+            "hitPointsAffected": 88
+          }
+        ]
+      },
+      "classes": ["sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateSorcerer", "magicInitiateWizard"],
+      "tags": ["control", "areaOfEffect", "illusion"]
+    },
+    {
+      "id": "command",
+      "name": "Command",
+      "description": "Speak a one-word command to a creature, forcing it to follow your order on its next turn.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "oneRound",
+      "effect": {
+        "type": "compulsion",
+        "target": "creature",
+        "commands": ["approach", "drop", "flee", "grovel", "halt"]
+      },
+      "savingThrow": {
+        "type": "wisdom",
+        "onSuccess": "spellFails"
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "target": "up to two creatures"
+          },
+          {
+            "target": "up to three creatures"
+          },
+          {
+            "target": "up to four creatures"
+          },
+          {
+            "target": "up to five creatures"
+          },
+          {
+            "target": "up to six creatures"
+          }
+        ]
+      },
+      "classes": ["cleric"],
+      "subClasses": [
+        {
+          "name": ["theFiend"],
+          "level": 1
+        },
+        {
+          "name": ["paladin"],
+          "level": 2
+        }
+      ],
+      "feats": ["magicInitiateCleric"],
+      "tags": ["control", "social", "compulsion"]
+    },
+    {
+      "id": "compelledDuel",
+      "name": "Compelled Duel",
+      "description": "Compel a creature to focus its attacks solely on you, ignoring other targets.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "compulsion",
+        "target": "creature",
+        "conditions": ["cannotAttackOthers", "disadvantageAgainstOthers"]
+      },
+      "savingThrow": {
+        "type": "wisdom",
+        "onSuccess": "spellFails"
+      },
+      "concentration": true,
+      "classes": ["paladin"],
+      "tags": ["control", "compulsion", "concentration"]
+    },
+    {
+      "id": "createOrDestroyWater",
+      "name": "Create or Destroy Water",
+      "description": "Either create water to extinguish fires or destroy water to dry up areas.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "transmutation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 9,
+        "unit": "meters"
+      },
+      "areaOfEffect": {
+        "shape": "sphere",
+        "radius": 4,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "effect": {
+        "type": "createOrDestroyWater",
+        "options": ["createWater", "destroyWater"]
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "radius": 6
+          },
+          {
+            "radius": 8
+          },
+          {
+            "radius": 10
+          },
+          {
+            "radius": 12
+          },
+          {
+            "radius": 14
+          }
+        ]
+      },
+      "classes": ["cleric", "druid"],
+      "feats": ["magicInitiateCleric", "magicInitiateDruid"],
+      "tags": ["utility", "environment", "transmutation"]
+    },
+    {
+      "id": "cureWounds",
+      "name": "Cure Wounds",
+      "description": "Restore hit points to a creature you touch.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 1.5,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "healing": {
+        "dice": "1d8",
+        "modifier": "spellcastingAbility"
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "healings": [
+          {
+            "dice": "2d8"
+          },
+          {
+            "dice": "3d8"
+          },
+          {
+            "dice": "4d8"
+          },
+          {
+            "dice": "5d8"
+          },
+          {
+            "dice": "6d8"
+          }
+        ]
+      },
+      "classes": ["bard", "cleric", "druid"],
+      "subClasses": [
+        {
+          "name": ["lifeDomain"],
+          "level": 1
+        },
+        {
+          "name": ["paladin", "ranger"],
+          "level": 2
+        }
+      ],
+      "feats": [
+        "magicInitiateBard",
+        "magicInitiateCleric",
+        "magicInitiateDruid"
+      ],
+      "tags": ["healing", "support", "touch"]
+    },
+    {
+      "id": "disguiseSelf",
+      "name": "Disguise Self",
+      "description": "Alter your appearance to look like someone else until the spell ends.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "illusion",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "oneHour",
+      "effect": {
+        "type": "illusion",
+        "target": "self",
+        "changesAppearance": true
+      },
+      "ritual": true,
+      "classes": ["bard", "sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["trickeryDomain"],
+          "level": 1
+        },
+        {
+          "name": ["draconicBloodline"],
+          "ancestry": "gold",
+          "level": 1
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight", "gloomStalker"],
+          "level": 3
+        }
+      ],
+      "feats": [
+        "magicInitiateBard",
+        "magicInitiateSorcerer",
+        "magicInitiateWizard",
+        "ritualCaster"
+      ],
+      "variants": [
+        "dragonbornFemale",
+        "dragonbornMale",
+        "drowFemale",
+        "drowMale",
+        "dwarfFemale",
+        "dwarfMale",
+        "elfFemale",
+        "elfMale",
+        "githyankiFemale",
+        "githyankiMale",
+        "gnomeFemale",
+        "gnomeMale",
+        "halfElfFemale",
+        "halfElfMale",
+        "halfOrcFemale",
+        "halfOrcMale",
+        "halflingFemale",
+        "halflingMale",
+        "humanFemale",
+        "humanMale",
+        "tieflingFemale",
+        "tieflingMale"
+      ],
+      "tags": ["utility", "illusion", "transformation"]
+    },
+    {
+      "id": "dissonantWhispers",
+      "name": "Dissonant Whispers",
+      "description": "Whisper a discordant melody that only one creature can hear, causing it psychic pain.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "damage": {
+        "type": "psychic",
+        "dice": "3d6"
+      },
+      "effect": {
+        "type": "frighten",
+        "duration": "twoTurns",
+        "conditions": [
+          "cannotMove",
+          "disadvantageOnAbilityChecks",
+          "disadvantageOnAttackRolls"
+        ]
+      },
+      "savingThrow": {
+        "type": "wisdom",
+        "onSuccess": {
+          "damage": "half",
+          "effect": "none"
+        }
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "damages": [
+          {
+            "dice": "4d6"
+          },
+          {
+            "dice": "5d6"
+          },
+          {
+            "dice": "6d6"
+          },
+          {
+            "dice": "7d6"
+          },
+          {
+            "dice": "8d6"
+          }
+        ]
+      },
+      "classes": ["bard"],
+      "subClasses": [
+        {
+          "name": ["theGreatOldOne"],
+          "level": 1
+        }
+      ],
+      "feats": ["magicInitiateBard"],
+      "tags": ["damage", "control", "psychic"]
+    },
+    {
+      "id": "divineFavor",
+      "name": "Divine Favor",
+      "description": "Imbue your weapon attacks with divine energy, causing them to deal extra radiant damage.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "buff",
+        "target": "self",
+        "additionalDamage": {
+          "dice": "1d4",
+          "type": "radiant"
+        }
+      },
+      "concentration": true,
+      "classes": ["paladin"],
+      "subClasses": [
+        {
+          "name": ["warDomain"],
+          "level": 1
+        }
+      ],
+      "tags": ["buff", "damage", "radiant", "concentration"]
+    },
+    {
+      "id": "enhanceLeap",
+      "name": "Enhance Leap",
+      "description": "Triple the jump distance of a creature you touch.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "transmutation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 1.5,
+        "unit": "meters"
+      },
+      "duration": "oneMinute",
+      "effect": {
+        "type": "buff",
+        "target": "creature",
+        "jumpDistanceMultiplier": 3
+      },
+      "ritual": true,
+      "classes": ["druid", "sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["ranger"],
+          "level": 2
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "races": [
+        {
+          "name": "githyanki",
+          "level": 3
+        }
+      ],
+      "feats": [
+        "magicInitiateDruid",
+        "magicInitiateSorcerer",
+        "magicInitiateWizard",
+        "ritualCaster"
+      ],
+      "tags": ["buff", "movement", "transmutation"]
+    },
+    {
+      "id": "ensnaringStrike",
+      "name": "Ensnaring Strike",
+      "description": "Your next attack summons thorny vines that can ensnare your target, restraining them and dealing piercing damage over time.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "conjuration",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "ensnare",
+        "duration": "upToOneMinute",
+        "damagePerTurn": {
+          "dice": "1d6",
+          "type": "piercing"
+        },
+        "conditions": ["restrained"]
+      },
+      "savingThrow": {
+        "type": "strength",
+        "onSuccess": "targetIsNotRestrained"
+      },
+      "concentration": true,
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "damagesPerTurn": [
+          {
+            "dice": "2d6"
+          },
+          {
+            "dice": "3d6"
+          },
+          {
+            "dice": "4d6"
+          },
+          {
+            "dice": "5d6"
+          },
+          {
+            "dice": "6d6"
+          }
+        ]
+      },
+      "classes": ["ranger"],
+      "tags": ["control", "damage", "piercing", "concentration"]
+    },
+    {
+      "id": "entangle",
+      "name": "Entangle",
+      "description": "Cause vines to sprout from the ground, creating difficult terrain and potentially restraining creatures within the area.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "conjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "areaOfEffect": {
+        "shape": "radius",
+        "size": 3,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "restrain",
+        "conditions": [
+          "cannotMove",
+          "disadvantageOnAttackRolls",
+          "disadvantageOnDexteritySaves"
+        ]
+      },
+      "savingThrow": {
+        "type": "strength",
+        "onSuccess": "notRestrained"
+      },
+      "concentration": true,
+      "classes": ["druid"],
+      "feats": ["magicInitiateDruid"],
+      "tags": ["control", "areaOfEffect", "conjuration", "terrain"]
+    },
+    {
+      "id": "expeditiousRetreat",
+      "name": "Expeditious Retreat",
+      "description": "Allow yourself to move at an incredible pace, enabling you to Dash as a bonus action on each of your turns.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "transmutation",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "buff",
+        "abilities": ["dashAsBonusAction"]
+      },
+      "concentration": true,
+      "classes": ["sorcerer", "warlock", "wizard"],
+      "subClasses": [
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": [
+        "magicInitiateSorcerer",
+        "magicInitiateWarlock",
+        "magicInitiateWizard"
+      ],
+      "tags": ["buff", "movement", "transmutation", "concentration"]
+    },
+    {
+      "id": "faerieFire",
+      "name": "Faerie Fire",
+      "description": "Illuminate creatures in a specific area, making them visible and granting advantage on attack rolls against them.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "areaOfEffect": {
+        "shape": "radius",
+        "size": 6,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "illumination",
+        "conditions": ["sheddingDimLight", "cannotBeInvisible"],
+        "grants": ["advantageToAttackers"]
+      },
+      "savingThrow": {
+        "type": "dexterity",
+        "onSuccess": "notAffected"
+      },
+      "concentration": true,
+      "classes": ["bard", "druid"],
+      "subClasses": [
+        {
+          "name": ["lightDomain", "theArchfey"],
+          "level": 1
+        }
+      ],
+      "races": [
+        {
+          "name": "drow",
+          "level": 3
+        },
+        {
+          "name": "drowHalfElf",
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateBard", "magicInitiateDruid"],
+      "tags": ["control", "areaOfEffect", "evocation", "concentration"]
+    },
+    {
+      "id": "falseLife",
+      "name": "False Life",
+      "description": "Bolster yourself with necromantic energy, gaining temporary hit points.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "necromancy",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "oneHour",
+      "effect": {
+        "type": "temporaryHitPoints",
+        "amount": 7
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "amount": 12
+          },
+          {
+            "amount": 17
+          },
+          {
+            "amount": 22
+          },
+          {
+            "amount": 27
+          },
+          {
+            "amount": 32
+          }
+        ]
+      },
+      "classes": ["sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateSorcerer", "magicInitiateWizard"],
+      "otherLearn": [
+        {
+          "method": "eldritchInvocation",
+          "name": "fiendishVigor",
+          "class": "warlock",
+          "level": 2,
+          "usage": "atWill"
+        }
+      ],
+      "tags": ["buff", "necromancy", "temporaryHitPoints"]
+    },
+    {
+      "id": "featherFall",
+      "name": "Feather Fall",
+      "description": "Choose up to five falling creatures within range; their rate of descent slows, and they take no damage from falling.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "transmutation",
+      "castingTime": "reaction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "oneMinute",
+      "effect": {
+        "type": "slowFall",
+        "targets": "up to five creatures",
+        "grants": ["immunityToFallingDamage"]
+      },
+      "components": {
+        "verbal": true,
+        "somatic": true,
+        "material": "a small feather or piece of down"
+      },
+      "ritual": false,
+      "classes": ["bard", "sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["draconicBloodline"],
+          "ancestry": "silver",
+          "level": 1
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": [
+        "magicInitiateBard",
+        "magicInitiateSorcerer",
+        "magicInitiateWizard"
+      ],
+      "tags": ["utility", "reaction", "transmutation"]
+    },
+    {
+      "id": "findFamiliar",
+      "name": "Find Familiar",
+      "description": "Summon a spirit that takes the form of an animal to aid you in combat and exploration.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "conjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "untilDismissed",
+      "effect": {
+        "type": "summon",
+        "target": "familiar",
+        "forms": ["variousAnimals"]
+      },
+      "ritual": true,
+      "recharge": "shortRest",
+      "classes": ["wizard"],
+      "subClasses": [
+        {
+          "name": ["beastTamer"],
+          "class": "ranger",
+          "level": 1
+        },
+        {
+          "name": ["eldritchKnight", "arcaneTrickster"],
+          "level": 3
+        },
+        {
+          "name": ["pactOfTheChain"],
+          "class": "warlock",
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateWizard", "ritualCaster"],
+      "tags": ["summoning", "utility", "conjuration"]
+    },
+    {
+      "id": "fogCloud",
+      "name": "Fog Cloud",
+      "description": "Create a dense fog that heavily obscures an area, potentially blinding creatures within.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "conjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "areaOfEffect": {
+        "shape": "sphere",
+        "radius": 5,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "obscure",
+        "conditions": ["heavilyObscured", "blindedWithinArea"]
+      },
+      "concentration": true,
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "radius": 7
+          },
+          {
+            "radius": 9
+          },
+          {
+            "radius": 11
+          },
+          {
+            "radius": 13
+          },
+          {
+            "radius": 15
+          }
+        ]
+      },
+      "classes": ["druid", "sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["tempestDomain"],
+          "level": 1
+        },
+        {
+          "name": ["draconicBloodline"],
+          "ancestry": "bronze",
+          "level": 1
+        },
+        {
+          "name": ["ranger"],
+          "level": 2
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": [
+        "magicInitiateDruid",
+        "magicInitiateSorcerer",
+        "magicInitiateWizard"
+      ],
+      "tags": ["control", "areaOfEffect", "conjuration", "concentration"]
+    },
+    {
+      "id": "goodberry",
+      "name": "Goodberry",
+      "description": "Conjure up to four magical berries that restore hit points when consumed.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "transmutation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 1.5,
+        "unit": "meters"
+      },
+      "duration": "untilLongRest",
+      "effect": {
+        "type": "conjuration",
+        "items": {
+          "name": "goodberry",
+          "quantity": 4,
+          "healing": {
+            "dice": "1d4"
+          }
+        }
+      },
+      "classes": ["druid"],
+      "subClasses": [
+        {
+          "name": ["ranger"],
+          "level": 2
+        }
+      ],
+      "feats": ["magicInitiateDruid"],
+      "tags": ["healing", "utility", "transmutation"]
+    },
+    {
+      "id": "grease",
+      "name": "Grease",
+      "description": "Create a slick grease on the ground, turning it into difficult terrain and potentially causing creatures to fall prone.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "conjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "areaOfEffect": {
+        "shape": "radius",
+        "size": 5,
+        "unit": "meters"
+      },
+      "duration": "tenRounds",
+      "effect": {
+        "type": "terrainEffect",
+        "terrain": "difficult",
+        "conditions": ["proneOnFailedSave", "flammable"]
+      },
+      "savingThrow": {
+        "type": "dexterity",
+        "onSuccess": "notProne"
+      },
+      "classes": ["wizard"],
+      "subClasses": [
+        {
+          "name": ["draconicBloodline"],
+          "ancestry": "black",
+          "level": 1
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateWizard"],
+      "tags": ["control", "areaOfEffect", "conjuration"]
+    },
+    {
+      "id": "guidingBolt",
+      "name": "Guiding Bolt",
+      "description": "Launch a radiant bolt at a creature, dealing damage and making it easier for others to hit.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "twoTurns",
+      "damage": {
+        "type": "radiant",
+        "dice": "4d6"
+      },
+      "attackRoll": true,
+      "effect": {
+        "type": "grantAdvantage",
+        "toNextAttack": true
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "damages": [
+          {
+            "dice": "5d6"
+          },
+          {
+            "dice": "6d6"
+          },
+          {
+            "dice": "7d6"
+          },
+          {
+            "dice": "8d6"
+          },
+          {
+            "dice": "9d6"
+          }
+        ]
+      },
+      "classes": ["cleric"],
+      "subClasses": [
+        {
+          "name": ["collegeOfLore"],
+          "level": 6
+        },
+        {
+          "name": ["bard"],
+          "level": 10
+        }
+      ],
+      "feats": ["magicInitiateCleric"],
+      "tags": ["damage", "support", "radiant"]
+    },
+    {
+      "id": "hailOfThorns",
+      "name": "Hail of Thorns",
+      "description": "Your next ranged weapon attack causes thorns to explode from the target, dealing piercing damage to nearby creatures.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "conjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "damage": {
+        "type": "weapon",
+        "additionalEffect": {
+          "damage": {
+            "dice": "1d10",
+            "type": "piercing"
+          },
+          "areaOfEffect": {
+            "shape": "radius",
+            "size": 2,
+            "unit": "meters"
+          },
+          "savingThrow": {
+            "type": "dexterity",
+            "onSuccess": "halfDamage"
+          }
+        }
+      },
+      "attackRoll": {
+        "type": "rangedWeapon",
+        "onMiss": "additionalEffectStillOccurs"
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "damages": [
+          {
+            "dice": "2d10"
+          },
+          {
+            "dice": "3d10"
+          },
+          {
+            "dice": "4d10"
+          },
+          {
+            "dice": "5d10"
+          },
+          {
+            "dice": "6d10"
+          }
+        ]
+      },
+      "classes": ["ranger"],
+      "tags": ["damage", "areaOfEffect", "piercing", "conjuration"]
+    },
+    {
+      "id": "healingWord",
+      "name": "Healing Word",
+      "description": "A creature of your choice regains hit points. No effect on undead or constructs.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "healing": {
+        "dice": "1d4",
+        "modifier": "spellcastingAbility"
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "healings": [
+          {
+            "dice": "2d4"
+          },
+          {
+            "dice": "3d4"
+          },
+          {
+            "dice": "4d4"
+          },
+          {
+            "dice": "5d4"
+          },
+          {
+            "dice": "6d4"
+          }
+        ]
+      },
+      "classes": ["bard", "cleric", "druid"],
+      "feats": [
+        "magicInitiateBard",
+        "magicInitiateCleric",
+        "magicInitiateDruid"
+      ],
+      "tags": ["healing", "support", "evocation"]
+    },
+    {
+      "id": "hellishRebuke",
+      "name": "Hellish Rebuke",
+      "description": "As a reaction when you take damage from a creature, point your finger at the attacker to engulf them in hellish flames.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "reaction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "damage": {
+        "type": "fire",
+        "dice": "2d10",
+        "savingThrow": {
+          "type": "dexterity",
+          "onSuccess": "halfDamage"
+        }
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "damages": [
+          {
+            "dice": "3d10"
+          },
+          {
+            "dice": "4d10"
+          },
+          {
+            "dice": "5d10"
+          },
+          {
+            "dice": "6d10"
+          },
+          {
+            "dice": "7d10"
+          }
+        ]
+      },
+      "classes": ["warlock"],
+      "subClasses": [
+        {
+          "name": ["oathbreaker"],
+          "level": 3
+        }
+      ],
+      "races": [
+        {
+          "name": "asmodeusTiefling",
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateWarlock"],
+      "tags": ["damage", "fire", "reaction", "evocation"]
+    },
+    {
+      "id": "heroism",
+      "name": "Heroism",
+      "description": "Imbue yourself or an ally with bravery, making them immune to being frightened and granting temporary hit points each turn.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 1.5,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "buff",
+        "target": "creature",
+        "grants": ["immunityToFrightened"],
+        "temporaryHitPointsPerTurn": 5
+      },
+      "concentration": true,
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "target": "up to two creatures"
+          },
+          {
+            "target": "up to three creatures"
+          },
+          {
+            "target": "up to four creatures"
+          },
+          {
+            "target": "up to five creatures"
+          },
+          {
+            "target": "up to six creatures"
+          }
+        ],
+        "additionalTargetsPerSlot": 1
+      },
+      "classes": ["bard"],
+      "subClasses": [
+        {
+          "name": ["paladin"],
+          "level": 2
+        }
+      ],
+      "feats": ["magicInitiateBard"],
+      "tags": ["buff", "support", "concentration"]
+    },
+    {
+      "id": "hex",
+      "name": "Hex",
+      "description": "Place a curse on a creature, dealing extra necrotic damage when you hit it with an attack and giving it disadvantage on ability checks of a chosen ability.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "damage": {
+        "type": "necrotic",
+        "dice": "1d6",
+        "condition": "whenYouHitWithAttack"
+      },
+      "effect": {
+        "type": "curse",
+        "disadvantageOnAbilityChecks": "chosenAbility"
+      },
+      "concentration": true,
+      "variants": [
+        "strength",
+        "dexterity",
+        "constitution",
+        "intelligence",
+        "wisdom",
+        "charisma"
+      ],
+      "additional": {
+        "reapplyHex": {
+          "description": "If the target dies before the spell ends, you can use a bonus action to curse a new creature without expending a spell slot."
+        }
+      },
+      "classes": ["warlock"],
+      "feats": ["magicInitiateWarlock"],
+      "tags": ["debuff", "damage", "necrotic", "concentration"]
+    },
+    {
+      "id": "huntersMark",
+      "name": "Hunter's Mark",
+      "description": "Designate a creature as your quarry, dealing extra damage when you hit it with weapon attacks.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "divination",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "upToOneHour",
+      "effect": {
+        "type": "mark",
+        "additionalDamage": {
+          "dice": "1d6",
+          "type": "weapon"
+        },
+        "reapplyOnDeath": true
+      },
+      "concentration": true,
+      "classes": ["ranger"],
+      "subClasses": [
+        {
+          "name": ["oathOfVengeance"],
+          "level": 3
+        },
+        {
+          "name": ["collegeOfLore"],
+          "level": 6
+        },
+        {
+          "name": ["bard"],
+          "level": 10
+        }
+      ],
+      "tags": ["damage", "buff", "divination", "concentration"]
+    },
+    {
+      "id": "iceKnife",
+      "name": "Ice Knife",
+      "description": "Hurl a shard of ice that explodes, damaging the target and nearby creatures.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "conjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "damage": {
+        "type": "piercing",
+        "dice": "1d10",
+        "additionalEffect": {
+          "type": "cold",
+          "dice": "2d6",
+          "areaOfEffect": {
+            "shape": "radius",
+            "size": 2,
+            "unit": "meters"
+          },
+          "savingThrow": {
+            "type": "dexterity",
+            "onSuccess": "noDamage"
+          }
+        }
+      },
+      "attackRoll": {
+        "required": true,
+        "onMiss": "explosionStillOccurs"
+      },
+      "createsArea": {
+        "type": "ice",
+        "duration": "twoRounds",
+        "effects": ["difficultTerrain", "chanceToFallProne"]
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "additionalEffects": [
+          {
+            "dice": "3d6",
+            "type": "cold"
+          },
+          {
+            "dice": "4d6",
+            "type": "cold"
+          },
+          {
+            "dice": "5d6",
+            "type": "cold"
+          },
+          {
+            "dice": "6d6",
+            "type": "cold"
+          },
+          {
+            "dice": "7d6",
+            "type": "cold"
+          }
+        ]
+      },
+      "classes": ["druid", "sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        },
+        {
+          "name": ["collegeOfLore"],
+          "level": 6
+        },
+        {
+          "name": ["bard"],
+          "level": 10
+        }
+      ],
+      "feats": [
+        "magicInitiateDruid",
+        "magicInitiateSorcerer",
+        "magicInitiateWizard"
+      ],
+      "tags": ["damage", "areaOfEffect", "cold", "conjuration"]
+    },
+    {
+      "id": "inflictWounds",
+      "name": "Inflict Wounds",
+      "description": "Make a melee spell attack to deal necrotic damage to a creature you touch.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "necromancy",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 1.5,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "damage": {
+        "type": "necrotic",
+        "dice": "3d10"
+      },
+      "attackRoll": {
+        "required": true,
+        "type": "meleeSpell"
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "damages": [
+          {
+            "dice": "4d10"
+          },
+          {
+            "dice": "5d10"
+          },
+          {
+            "dice": "6d10"
+          },
+          {
+            "dice": "8d10"
+          },
+          {
+            "dice": "9d10"
+          }
+        ]
+      },
+      "classes": ["cleric"],
+      "subClasses": [
+        {
+          "name": ["oathbreaker"],
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateCleric"],
+      "tags": ["damage", "necromancy", "melee"]
+    },
+    {
+      "id": "longstrider",
+      "name": "Longstrider",
+      "description": "Increase a creature's movement speed by 10 feet (3 meters) until the spell ends.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "transmutation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 1.5,
+        "unit": "meters"
+      },
+      "duration": "untilLongRest",
+      "effect": {
+        "type": "buff",
+        "target": "creature",
+        "movementIncrease": {
+          "distance": 3,
+          "unit": "meters"
+        }
+      },
+      "ritual": true,
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "target": "up to two creatures"
+          },
+          {
+            "target": "up to three creatures"
+          },
+          {
+            "target": "up to four creatures"
+          },
+          {
+            "target": "up to five creatures"
+          },
+          {
+            "target": "up to six creatures"
+          }
+        ]
+      },
+      "classes": ["bard", "druid", "wizard"],
+      "subClasses": [
+        {
+          "name": ["ranger"],
+          "level": 2
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": [
+        "magicInitiateBard",
+        "magicInitiateDruid",
+        "magicInitiateWizard",
+        "ritualCaster"
+      ],
+      "tags": ["buff", "movement", "transmutation", "ritual"]
+    },
+    {
+      "id": "mageArmor",
+      "name": "Mage Armor",
+      "description": "Protect an unarmored creature with a magical force, setting its base AC to 13 plus its Dexterity modifier.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "abjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 1.5,
+        "unit": "meters"
+      },
+      "duration": "eightHours",
+      "effect": {
+        "type": "buff",
+        "target": "unarmoredCreature",
+        "armorClass": {
+          "base": 13,
+          "modifier": "dexterity"
+        }
+      },
+      "classes": ["sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateSorcerer", "magicInitiateWizard"],
+      "tags": ["buff", "defense", "abjuration"]
+    },
+    {
+      "id": "magicMissile",
+      "name": "Magic Missile",
+      "description": "Create multiple darts of magical force that automatically hit their targets.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "damage": {
+        "type": "force",
+        "darts": 3,
+        "perDart": {
+          "dice": "1d4+1"
+        }
+      },
+      "additional": {
+        "targets": "each dart can be directed at a different creature"
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "damages": [
+          {
+            "darts": 4
+          },
+          {
+            "darts": 5
+          },
+          {
+            "darts": 6
+          },
+          {
+            "darts": 7
+          },
+          {
+            "darts": 8
+          }
+        ]
+      },
+      "classes": ["sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        },
+        {
+          "name": ["collegeOfLore"],
+          "level": 6
+        },
+        {
+          "name": ["bard"],
+          "level": 10
+        }
+      ],
+      "feats": ["magicInitiateSorcerer", "magicInitiateWizard"],
+      "tags": ["damage", "force", "evocation"]
+    },
+    {
+      "id": "protectionFromEvilAndGood",
+      "name": "Protection from Evil and Good",
+      "description": "Protect a creature against certain types of creatures, granting various benefits.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "abjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 1.5,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "protection",
+        "target": "creature",
+        "benefits": [
+          "disadvantageToAttackers",
+          "cannotBeCharmed",
+          "cannotBeFrightened",
+          "cannotBePossessed"
+        ],
+        "against": [
+          "aberrations",
+          "celestials",
+          "elementals",
+          "fey",
+          "fiends",
+          "undead"
+        ]
+      },
+      "concentration": true,
+      "classes": ["cleric", "warlock", "wizard"],
+      "subClasses": [
+        {
+          "name": ["paladin"],
+          "level": 2
+        },
+        {
+          "name": ["oathOfDevotion"],
+          "level": 3
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": [
+        "magicInitiateCleric",
+        "magicInitiateWarlock",
+        "magicInitiateWizard"
+      ],
+      "tags": ["buff", "defense", "abjuration", "concentration"]
+    },
+    {
+      "id": "rayOfSickness",
+      "name": "Ray of Sickness",
+      "description": "Fire a ray of toxic energy that damages and may poison a creature.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "necromancy",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "damage": {
+        "type": "poison",
+        "dice": "2d8"
+      },
+      "attackRoll": {
+        "required": true,
+        "type": "rangedSpell"
+      },
+      "effect": {
+        "type": "poison",
+        "duration": "twoTurns"
+      },
+      "savingThrow": {
+        "type": "constitution",
+        "onSuccess": "notPoisoned"
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "damages": [
+          {
+            "dice": "3d8"
+          },
+          {
+            "dice": "4d8"
+          },
+          {
+            "dice": "5d8"
+          },
+          {
+            "dice": "6d8"
+          },
+          {
+            "dice": "7d8"
+          }
+        ]
+      },
+      "classes": ["sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["draconicBloodline"],
+          "ancestry": "green",
+          "level": 1
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateSorcerer", "magicInitiateWizard"],
+      "tags": ["damage", "debuff", "poison", "necromancy"]
+    },
+    {
+      "id": "sanctuary",
+      "name": "Sanctuary",
+      "description": "Protect a creature from enemy attacks until it harms another creature.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "abjuration",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "tenRounds",
+      "effect": {
+        "type": "ward",
+        "target": "creature",
+        "conditions": [
+          "cannotBeTargetedByAttacks",
+          "cannotBeTargetedByHarmfulSpells"
+        ],
+        "endsIf": "the warded creature attacks or harms another creature"
+      },
+      "additional": {
+        "note": "Area spells can still affect the warded creature"
+      },
+      "classes": ["cleric"],
+      "subClasses": [
+        {
+          "name": ["oathOfDevotion"],
+          "level": 3
+        },
+        {
+          "name": ["collegeOfLore"],
+          "level": 6
+        },
+        {
+          "name": ["bard"],
+          "level": 10
+        }
+      ],
+      "feats": ["magicInitiateCleric"],
+      "tags": ["defense", "abjuration", "support"]
+    },
+    {
+      "id": "searingSmite",
+      "name": "Searing Smite",
+      "description": "Your next melee weapon hit deals extra fire damage and may set the target ablaze.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "buff",
+        "additionalDamage": {
+          "dice": "1d6",
+          "type": "fire"
+        },
+        "onHit": {
+          "applyCondition": "searingSmite"
+        }
+      },
+      "concentration": true,
+      "damageOverTime": {
+        "dice": "1d6",
+        "type": "fire",
+        "duration": "upToTenRounds",
+        "savingThrow": {
+          "type": "constitution",
+          "onSuccess": "conditionEnds"
+        }
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "damages": [
+          {
+            "initialDamageDice": "2d6"
+          },
+          {
+            "initialDamageDice": "3d6"
+          },
+          {
+            "initialDamageDice": "4d6"
+          },
+          {
+            "initialDamageDice": "5d6"
+          },
+          {
+            "initialDamageDice": "6d6"
+          }
+        ]
+      },
+      "classes": ["paladin"],
+      "races": [
+        {
+          "name": "zarielTiefling",
+          "level": 3
+        }
+      ],
+      "tags": ["damage", "fire", "melee", "concentration"]
+    },
+    {
+      "id": "shield",
+      "name": "Shield",
+      "description": "As a reaction, you raise a magical barrier that increases your Armor Class and nullifies Magic Missile until the start of your next turn.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "abjuration",
+      "castingTime": "reaction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "oneRound",
+      "effect": {
+        "type": "defense",
+        "armorClassIncrease": 5,
+        "immunity": ["magicMissile"]
+      },
+      "classes": ["sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateSorcerer", "magicInitiateWizard"],
+      "tags": ["defense", "reaction", "abjuration"]
+    },
+    {
+      "id": "shieldOfFaith",
+      "name": "Shield of Faith",
+      "description": "Create a shimmering field around a creature, granting it a bonus to Armor Class.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "abjuration",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "buff",
+        "target": "creature",
+        "armorClassBonus": 2
+      },
+      "concentration": true,
+      "classes": ["cleric"],
+      "subClasses": [
+        {
+          "name": ["warDomain"],
+          "level": 1
+        },
+        {
+          "name": ["paladin"],
+          "level": 2
+        }
+      ],
+      "feats": ["magicInitiateCleric"],
+      "tags": ["buff", "defense", "abjuration", "concentration"]
+    },
+    {
+      "id": "sleep",
+      "name": "Sleep",
+      "description": "Send creatures into a magical slumber, affecting a total of 24 hit points worth of creatures.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "twoRounds",
+      "effect": {
+        "type": "sleep",
+        "hitPointsAffected": 24,
+        "conditions": ["unconscious"]
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "effects": [
+          {
+            "hitPointsAffected": 32
+          },
+          {
+            "hitPointsAffected": 40
+          },
+          {
+            "hitPointsAffected": 48
+          },
+          {
+            "hitPointsAffected": 56
+          },
+          {
+            "hitPointsAffected": 64
+          }
+        ]
+      },
+      "savingThrow": null,
+      "classes": ["bard", "sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["knowledgeDomain"],
+          "level": 1
+        },
+        {
+          "name": ["theArchfey"],
+          "level": 1
+        },
+        {
+          "name": ["draconicBloodline"],
+          "ancestry": "brass",
+          "level": 1
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": [
+        "magicInitiateBard",
+        "magicInitiateSorcerer",
+        "magicInitiateWizard"
+      ],
+      "tags": ["control", "enchantment", "areaOfEffect"]
+    },
+    {
+      "id": "speakWithAnimals",
+      "name": "Speak with Animals",
+      "description": "Gain the ability to comprehend and verbally communicate with beasts for a duration.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "divination",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "untilLongRest",
+      "effect": {
+        "type": "communication",
+        "target": "self",
+        "abilities": ["understandAnimals", "speakToAnimals"]
+      },
+      "ritual": true,
+      "classes": ["bard", "druid"],
+      "subClasses": [
+        {
+          "name": ["natureDomain"],
+          "level": 1
+        },
+        {
+          "name": ["ranger"],
+          "level": 2
+        },
+        {
+          "name": ["oathOfTheAncients"],
+          "level": 3
+        },
+        {
+          "name": ["wildheart"],
+          "level": 3
+        }
+      ],
+      "races": [
+        {
+          "name": "forestGnome",
+          "level": 1
+        }
+      ],
+      "feats": ["magicInitiateBard", "magicInitiateDruid", "ritualCaster"],
+      "tags": ["utility", "divination", "communication", "ritual"]
+    },
+    {
+      "id": "tashasHideousLaughter",
+      "name": "Tasha's Hideous Laughter",
+      "description": "Cause a creature to collapse into fits of laughter, rendering it prone and incapacitated.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "incapacitate",
+        "conditions": ["prone", "incapacitated"],
+        "requirements": {
+          "intelligence": 5
+        }
+      },
+      "savingThrow": {
+        "type": "wisdom",
+        "onSuccess": "spellEnds"
+      },
+      "concentration": true,
+      "classes": ["bard", "wizard"],
+      "subClasses": [
+        {
+          "name": ["theGreatOldOne"],
+          "level": 1
+        },
+        {
+          "name": ["draconicBloodline"],
+          "ancestry": "copper",
+          "level": 1
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": ["magicInitiateBard", "magicInitiateWizard"],
+      "tags": ["control", "enchantment", "concentration"]
+    },
+    {
+      "id": "thunderousSmite",
+      "name": "Thunderous Smite",
+      "description": "Your next melee weapon hit emits a thunderous boom, dealing extra thunder damage and possibly pushing the target away and knocking it prone.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "buff",
+        "additionalDamage": {
+          "dice": "2d6",
+          "type": "thunder"
+        },
+        "onHit": {
+          "savingThrow": {
+            "type": "strength",
+            "onSuccess": "noProneOrPush"
+          },
+          "pushDistance": {
+            "distance": 3,
+            "unit": "meters"
+          },
+          "conditions": ["prone"]
+        }
+      },
+      "attackRoll": {
+        "required": true,
+        "type": "meleeWeapon"
+      },
+      "concentration": true,
+      "classes": ["paladin"],
+      "subClasses": [
+        {
+          "name": ["collegeOfLore"],
+          "level": 6
+        },
+        {
+          "name": ["bard"],
+          "level": 10
+        }
+      ],
+      "tags": ["damage", "melee", "thunder", "concentration"]
+    },
+    {
+      "id": "thunderwave",
+      "name": "Thunderwave",
+      "description": "Create a wave of thunderous force that deals damage and pushes creatures and objects away from you.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "areaOfEffect": {
+        "shape": "cube",
+        "size": 5,
+        "unit": "meters",
+        "origin": "self"
+      },
+      "duration": "instantaneous",
+      "damage": {
+        "type": "thunder",
+        "dice": "2d8",
+        "savingThrow": {
+          "type": "constitution",
+          "onSuccess": {
+            "damage": "half",
+            "noPush": true
+          }
+        }
+      },
+      "effect": {
+        "type": "push",
+        "distance": {
+          "distance": 3,
+          "unit": "meters"
+        }
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "damages": [
+          {
+            "dice": "3d8"
+          },
+          {
+            "dice": "4d8"
+          },
+          {
+            "dice": "5d8"
+          },
+          {
+            "dice": "6d8"
+          },
+          {
+            "dice": "7d8"
+          }
+        ]
+      },
+      "classes": ["bard", "druid", "sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["tempestDomain"],
+          "level": 1
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        },
+        {
+          "name": ["stormSorcery"],
+          "level": 6
+        }
+      ],
+      "feats": [
+        "magicInitiateBard",
+        "magicInitiateDruid",
+        "magicInitiateSorcerer",
+        "magicInitiateWizard"
+      ],
+      "tags": ["damage", "areaOfEffect", "thunder", "evocation"]
+    },
+    {
+      "id": "witchBolt",
+      "name": "Witch Bolt",
+      "description": "Create a sustained arc of lightning between you and a creature, dealing initial damage and allowing you to deal automatic damage on subsequent turns.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "concentration",
+      "damage": {
+        "type": "lightning",
+        "dice": "1d12"
+      },
+      "attackRoll": {
+        "required": true,
+        "type": "rangedSpell"
+      },
+      "effect": {
+        "type": "sustainedArc",
+        "damagePerTurn": {
+          "dice": "1d12",
+          "type": "lightning"
+        },
+        "actionRequired": "action"
+      },
+      "scaling": {
+        "spellSlots": [2, 3, 4, 5, 6],
+        "Damages": [
+          {
+            "initialDamageDice": "2d12"
+          },
+          {
+            "initialDamageDice": "3d12"
+          },
+          {
+            "initialDamageDice": "4d12"
+          },
+          {
+            "initialDamageDice": "5d12"
+          },
+          {
+            "initialDamageDice": "6d12"
+          }
+        ]
+      },
+      "concentration": true,
+      "classes": ["sorcerer", "warlock", "wizard"],
+      "subClasses": [
+        {
+          "name": ["draconicBloodline"],
+          "ancestry": "blue",
+          "level": 1
+        },
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 3
+        }
+      ],
+      "feats": [
+        "magicInitiateSorcerer",
+        "magicInitiateWarlock",
+        "magicInitiateWizard"
+      ],
+      "tags": ["damage", "lightning", "evocation", "concentration"]
+    },
+    {
+      "id": "wrathfulSmite",
+      "name": "Wrathful Smite",
+      "description": "Your next melee weapon hit deals extra psychic damage and may frighten the target.",
+      "level": 1,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "concentration",
+      "effect": {
+        "type": "buff",
+        "additionalDamage": {
+          "dice": "1d6",
+          "type": "psychic"
+        },
+        "onHit": {
+          "savingThrow": {
+            "type": "wisdom",
+            "onSuccess": "notFrightened"
+          },
+          "condition": "frightened"
+        }
+      },
+      "attackRoll": {
+        "required": true,
+        "type": "meleeWeapon"
+      },
+      "concentration": true,
+      "classes": ["paladin"],
+      "tags": ["damage", "melee", "psychic", "concentration"]
+    }
+  ]
+}
