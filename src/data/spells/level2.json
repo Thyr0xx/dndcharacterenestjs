@@ -704,69 +704,358 @@
       "tags": ["enchantment", "control", "charm", "utility"]
     },
     {
-        "id": "flameBlade",
-        "name": "Flame Blade",
-        "description": "Conjure a flaming Scimitar in your hand for tenRounds that deals 3d6 Fire damage. It sheds a bright light in a 3 m / 10 ft radius and a dim light in a 6 m / 20 ft radius. The blade can be unequipped and equipped again, but has to stay on the spellcaster's person.",
-        "level": 2,
-        "consumeSpellSlot": true,
-        "school": "evocation",
-        "castingTime": "bonusAction",
-        "range": {
-          "distance": 0,
-          "unit": "self"
+      "id": "flameBlade",
+      "name": "Flame Blade",
+      "description": "Conjure a flaming Scimitar in your hand for tenRounds that deals 3d6 Fire damage. It sheds a bright light in a 3 m / 10 ft radius and a dim light in a 6 m / 20 ft radius. The blade can be unequipped and equipped again, but has to stay on the spellcaster's person.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "bonusAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "duration": "tenRounds",
+      "damage": {
+        "type": "fire",
+        "dice": "3d6"
+      },
+      "effect": {
+        "type": "summonWeapon",
+        "details": "Flaming scimitar that sheds bright light",
+        "light": {
+          "bright": {
+            "radius": 3,
+            "unit": "meters"
+          }
         },
-        "duration": "tenRounds",
-        "damage": {
-          "type": "fire",
-          "dice": "3d6"
-        },
-        "effect": {
-          "type": "summonWeapon",
-          "details": "Flaming scimitar that sheds bright and dim light",
-          "light": {
-            "bright": {
-              "radius": 3,
-              "unit": "meters"
+        "constraints": "Blade must stay on the spellcaster's person"
+      },
+      "scaling": {
+        "spellSlots": [3, 4, 5, 6],
+        "effects": [
+          {
+            "additionalDamage": {
+              "dice": "4d6"
             }
           },
-          "constraints": "Blade must stay on the spellcaster's person"
-        },
-        "scaling": {
-          "spellSlots": [3, 4, 5, 6],
-          "effects": [
-            {
-              "additionalDamage": {
-                "dice": "4d6"
-              }
-            },
-            {
-              "additionalDamage": {
-                "dice": "5d6"
-              }
-            },
-            {
-                "additionalDamage": {
-                  "dice": "6d6"
-                }
-              },
-              {
-                "additionalDamage": {
-                  "dice": "7d6"
-                }
-              }
-          ]
-        },
-        "classes": ["druid"],
-        "subClasses": [],
-        "feats": [],
-        "tags": ["evocation", "damage", "fire", "utility"],
-        "races": [
           {
-            "race": "Mephistopheles Tiefling",
-            "level": 5
+            "additionalDamage": {
+              "dice": "5d6"
+            }
+          },
+          {
+            "additionalDamage": {
+              "dice": "6d6"
+            }
+          },
+          {
+            "additionalDamage": {
+              "dice": "7d6"
+            }
           }
         ]
-      }
-      
+      },
+      "classes": ["druid"],
+      "subClasses": [],
+      "feats": [],
+      "tags": ["evocation", "damage", "fire", "utility"],
+      "races": [
+        {
+          "race": "Mephistopheles Tiefling",
+          "level": 5
+        }
+      ]
+    },
+    {
+      "id": "flamingSphere",
+      "name": "Flaming Sphere",
+      "description": "Summon a Flaming Sphere that deals 2d6 Fire damage to nearby enemies and objects. It sheds bright light in a 6m radius and dim light for an additional 6m. You can move the sphere.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "conjuration",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "areaOfEffect": {
+        "shape": "sphere",
+        "size": 2,
+        "unit": "meters"
+      },
+      "duration": "tenRounds",
+      "damage": {
+        "type": "fire",
+        "dice": "2d6"
+      },
+      "effect": {
+        "type": "summon",
+        "radius": {
+          "brightLight": {
+            "distance": 6,
+            "unit": "meters"
+          },
+          "dimLight": {
+            "distance": 12,
+            "unit": "meters"
+          }
+        },
+        "moveable": true
+      },
+      "savingThrow": {
+        "type": "dexterity",
+        "onSuccess": "halfDamage"
+      },
+      "concentration": true,
+      "scaling": {
+        "spellSlots": [3, 4, 5, 6],
+        "damages": [
+          {
+            "dice": "3d6"
+          },
+          {
+            "dice": "4d6"
+          },
+          {
+            "dice": "5d6"
+          },
+          {
+            "dice": "6d6"
+          }
+        ]
+      },
+      "classes": ["druid", "wizard"],
+      "subClasses": [
+        {
+          "name": ["arcaneTrickster", "eldritchKnight"],
+          "level": 8
+        },
+        {
+          "name": ["lightDomain"],
+          "level": 3
+        }
+      ],
+      "tags": [
+        "damage",
+        "fire",
+        "summon",
+        "conjuration",
+        "areaOfEffect",
+        "concentration"
+      ]
+    },
+    {
+      "id": "gustOfWind",
+      "name": "Gust of Wind",
+      "description": "Summon a strong wind that clears all clouds. Creatures caught in the gale must succeed on a Strength saving throw or be pushed back 5 meters and become Off Balance.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "evocation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 0,
+        "unit": "self"
+      },
+      "areaOfEffect": {
+        "shape": "line",
+        "size": 12,
+        "unit": "meters"
+      },
+      "duration": "oneRound",
+      "effect": {
+        "type": "wind",
+        "push": {
+          "distance": {
+            "value": 5,
+            "unit": "meters"
+          },
+          "condition": "offBalance"
+        }
+      },
+      "savingThrow": {
+        "type": "strength",
+        "onSuccess": "noPush"
+      },
+      "concentration": true,
+      "classes": ["druid", "sorcerer", "wizard"],
+      "subClasses": [
+        {
+          "name": ["tempestDomain"],
+          "level": 3
+        },
+        {
+          "name": ["stormSorcery"],
+          "level": 6
+        },
+        {
+          "name": ["eldritchKnight"],
+          "level": 7
+        },
+        {
+          "name": ["arcaneTrickster"],
+          "level": 8
+        }
+      ],
+      "tags": ["control", "wind", "evocation", "areaOfEffect", "concentration"]
+    },
+    {
+      "id": "heatMetal",
+      "name": "Heat Metal",
+      "description": "Cause a metal weapon or armour to glow red-hot, forcing the wearer to drop it or receive Disadvantage on Attack rolls and Ability Checks.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "transmutation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "tenRounds",
+      "damage": {
+        "type": "fire",
+        "dice": "2d8"
+      },
+      "effect": {
+        "type": "debuff",
+        "disadvantage": ["attackRolls", "abilityChecks"],
+        "reapplyDamage": {
+          "dice": "2d8",
+          "type": "fire"
+        }
+      },
+      "savingThrow": {
+        "type": "constitution",
+        "onSuccess": "noDisadvantage"
+      },
+      "concentration": true,
+      "scaling": {
+        "spellSlots": [3, 4, 5, 6],
+        "damages": [
+          {
+            "dice": "3d8"
+          },
+          {
+            "dice": "4d8"
+          },
+          {
+            "dice": "5d8"
+          },
+          {
+            "dice": "6d8"
+          }
+        ]
+      },
+      "classes": ["bard", "druid"],
+      "tags": ["damage", "fire", "debuff", "transmutation", "concentration"]
+    },
+    {
+      "id": "holdPerson",
+      "name": "Hold Person",
+      "description": "Hold a humanoid enemy still. They cannot Move, Act, or React. Attacks from within 3 meters are always Critical Hits.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "enchantment",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "tenRounds",
+      "effect": {
+        "type": "control",
+        "target": "humanoid",
+        "incapacitated": true,
+        "criticalHitRange": 3
+      },
+      "savingThrow": {
+        "type": "wisdom",
+        "onSuccess": "conditionEnds"
+      },
+      "concentration": true,
+      "scaling": {
+        "spellSlots": [3, 4, 5, 6],
+        "effects": [
+          {
+            "targets": "up to two creatures"
+          },
+          {
+            "targets": "up to three creatures"
+          },
+          {
+            "targets": "up to four creatures"
+          },
+          {
+            "targets": "up to five creatures"
+          }
+        ]
+      },
+      "classes": ["bard", "cleric", "druid", "sorcerer", "warlock", "wizard"],
+      "tags": ["control", "incapacitate", "enchantment", "concentration"]
+    },
+    {
+      "id": "invisibility",
+      "name": "Invisibility",
+      "description": "Turn a creature invisible. Invisibility breaks if they attack or cast a spell.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "illusion",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 1.5,
+        "unit": "meters"
+      },
+      "duration": "tenRounds",
+      "effect": {
+        "type": "buff",
+        "condition": "invisible",
+        "bonus": {
+          "attackRoll": "advantage",
+          "disadvantageOnAttack": true
+        },
+        "endsOn": ["attack", "castSpell"]
+      },
+      "concentration": true,
+      "scaling": {
+        "spellSlots": [3, 4, 5, 6],
+        "effects": [
+          {
+            "targets": "up to two creatures"
+          },
+          {
+            "targets": "up to three creatures"
+          },
+          {
+            "targets": "up to four creatures"
+          },
+          {
+            "targets": "up to five creatures"
+          }
+        ]
+      },
+      "classes": ["bard", "sorcerer", "warlock", "wizard"],
+      "tags": ["buff", "illusion", "invisibility", "concentration"]
+    },
+    {
+      "id": "knock",
+      "name": "Knock",
+      "description": "Unlock a non-magical locked object.",
+      "level": 2,
+      "consumeSpellSlot": true,
+      "school": "transmutation",
+      "castingTime": "oneAction",
+      "range": {
+        "distance": 18,
+        "unit": "meters"
+      },
+      "duration": "instantaneous",
+      "effect": {
+        "type": "utility",
+        "target": "non-magical lock",
+        "unlock": true
+      },
+      "classes": ["bard", "sorcerer", "wizard"],
+      "tags": ["utility", "transmutation"]
+    }
   ]
 }
