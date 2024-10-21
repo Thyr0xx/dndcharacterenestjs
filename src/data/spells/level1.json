@@ -12,7 +12,7 @@
         "distance": 18,
         "unit": "meters"
       },
-      "duration": "tenMinutes",
+      "duration": "tenRounds",
       "effect": {
         "type": "charm",
         "target": "beast",
@@ -118,7 +118,7 @@
       },
       "effect": {
         "type": "preventReactions",
-        "duration": "oneTurn"
+        "duration": "oneRound"
       },
       "scaling": {
         "spellSlots": [2, 3, 4, 5, 6],
@@ -334,7 +334,7 @@
         "distance": 18,
         "unit": "meters"
       },
-      "duration": "oneHour",
+      "duration": "tenRounds",
       "effect": {
         "type": "charm",
         "target": "humanoid",
@@ -459,7 +459,7 @@
         "size": 5,
         "unit": "meters"
       },
-      "duration": "oneTurn",
+      "duration": "oneRound",
       "effect": {
         "type": "blind",
         "target": "creatures",
@@ -690,7 +690,7 @@
         "distance": 0,
         "unit": "self"
       },
-      "duration": "oneHour",
+      "duration": "tenRounds",
       "effect": {
         "type": "illusion",
         "target": "self",
@@ -764,7 +764,7 @@
       },
       "effect": {
         "type": "frighten",
-        "duration": "twoTurns",
+        "duration": "twoRounds",
         "conditions": [
           "cannotMove",
           "disadvantageOnAbilityChecks",
@@ -851,7 +851,7 @@
         "distance": 1.5,
         "unit": "meters"
       },
-      "duration": "oneMinute",
+      "duration": "oneRound",
       "effect": {
         "type": "buff",
         "target": "creature",
@@ -898,7 +898,7 @@
       "duration": "concentration",
       "effect": {
         "type": "ensnare",
-        "duration": "upToOneMinute",
+        "duration": "oneRound",
         "damagePerTurn": {
           "dice": "1d6",
           "type": "piercing"
@@ -1060,7 +1060,7 @@
         "distance": 0,
         "unit": "self"
       },
-      "duration": "oneHour",
+      "duration": "tenRounds",
       "effect": {
         "type": "temporaryHitPoints",
         "amount": 7
@@ -1116,7 +1116,7 @@
         "distance": 18,
         "unit": "meters"
       },
-      "duration": "oneMinute",
+      "duration": "oneRound",
       "effect": {
         "type": "slowFall",
         "targets": "up to five creatures",
@@ -1344,7 +1344,7 @@
         "distance": 18,
         "unit": "meters"
       },
-      "duration": "twoTurns",
+      "duration": "twoRounds",
       "damage": {
         "type": "radiant",
         "dice": "4d6"
@@ -1651,7 +1651,7 @@
         "distance": 18,
         "unit": "meters"
       },
-      "duration": "upToOneHour",
+      "duration": "tenRounds",
       "effect": {
         "type": "mark",
         "additionalDamage": {
@@ -1888,7 +1888,7 @@
         "distance": 1.5,
         "unit": "meters"
       },
-      "duration": "eightHours",
+      "duration": "concentration",
       "effect": {
         "type": "buff",
         "target": "unarmoredCreature",
@@ -2045,7 +2045,7 @@
       },
       "effect": {
         "type": "poison",
-        "duration": "twoTurns"
+        "duration": "twoRounds"
       },
       "savingThrow": {
         "type": "constitution",
@@ -2156,7 +2156,7 @@
       "damageOverTime": {
         "dice": "1d6",
         "type": "fire",
-        "duration": "upToTenRounds",
+        "duration": "tenRounds",
         "savingThrow": {
           "type": "constitution",
           "onSuccess": "conditionEnds"

@@ -68,7 +68,7 @@
         "distance": 1.5,
         "unit": "meters"
       },
-      "duration": "10 turns",
+      "duration": "tenRounds",
       "effect": {
         "type": "lock",
         "target": "door or container",
@@ -143,7 +143,7 @@
         "distance": 18,
         "unit": "meters"
       },
-      "duration": "10 turns",
+      "duration": "tenRounds",
       "effect": {
         "type": "debuff",
         "target": "one creature",
@@ -204,7 +204,7 @@
         "distance": 0,
         "unit": "self"
       },
-      "duration": "10 turns",
+      "duration": "tenRounds",
       "effect": {
         "type": "buff",
         "target": "self",
@@ -244,7 +244,7 @@
       "range": {
         "type": "weaponRange"
       },
-      "duration": "10 turns",
+      "duration": "tenRounds",
       "damage": {
         "weaponDamage": true,
         "additionalDamage": {
@@ -256,7 +256,7 @@
       "effect": {
         "type": "brandingSmite",
         "condition": "cannotTurnInvisible",
-        "duration": "10 turns"
+        "duration": "tenRounds"
       },
       "scaling": {
         "spellSlots": [3, 4, 5, 6],
@@ -338,7 +338,7 @@
         "distance": 18,
         "unit": "meters"
       },
-      "duration": "10 turns",
+      "duration": "tenRounds",
       "damage": {
         "type": "slashing",
         "dice": "4d4",
@@ -352,7 +352,7 @@
       "effect": {
         "type": "createsArea",
         "area": "Cloud of Daggers",
-        "duration": "10 turns",
+        "duration": "tenRounds",
         "areaOfEffect": {
           "shape": "radius",
           "size": 2,
@@ -406,7 +406,7 @@
         "distance": 18,
         "unit": "meters"
       },
-      "duration": "3 turns",
+      "duration": "threeRounds",
       "effect": {
         "type": "charm",
         "target": "one humanoid",
@@ -624,7 +624,7 @@
     {
       "id": "enlargeReduce",
       "name": "Enlarge/Reduce",
-      "description": "Make a creature larger or smaller. Either option has a duration of 10 turns. This affects their weapon damage and Strength Checks and Saving throws.",
+      "description": "Make a creature larger or smaller. Either option has a duration of tenRounds. This affects their weapon damage and Strength Checks and Saving throws.",
       "level": 2,
       "consumeSpellSlot": true,
       "school": "transmutation",
@@ -633,7 +633,7 @@
         "distance": 9,
         "unit": "meters"
       },
-      "duration": "10 turns",
+      "duration": "tenRounds",
       "damage": {},
       "effect": {
         "type": "alterSize",
@@ -682,7 +682,7 @@
         "distance": 6,
         "unit": "meters"
       },
-      "duration": "10 turns",
+      "duration": "tenRounds",
       "damage": {},
       "effect": {
         "type": "enthrall",
@@ -706,7 +706,7 @@
     {
         "id": "flameBlade",
         "name": "Flame Blade",
-        "description": "Conjure a flaming Scimitar in your hand for 10 turns that deals 3d6 Fire damage. It sheds a bright light in a 3 m / 10 ft radius and a dim light in a 6 m / 20 ft radius. The blade can be unequipped and equipped again, but has to stay on the spellcaster's person.",
+        "description": "Conjure a flaming Scimitar in your hand for tenRounds that deals 3d6 Fire damage. It sheds a bright light in a 3 m / 10 ft radius and a dim light in a 6 m / 20 ft radius. The blade can be unequipped and equipped again, but has to stay on the spellcaster's person.",
         "level": 2,
         "consumeSpellSlot": true,
         "school": "evocation",
@@ -715,7 +715,7 @@
           "distance": 0,
           "unit": "self"
         },
-        "duration": "10 turns",
+        "duration": "tenRounds",
         "damage": {
           "type": "fire",
           "dice": "3d6"
